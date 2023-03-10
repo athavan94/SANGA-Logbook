@@ -1,13 +1,25 @@
+using PRG3_Logbook.Entities;
+using PRG3_Logbook.Firebase;
+
 namespace PRG3_Logbook;
 
 public partial class CapturePage : ContentPage
 {
+	private IFirebaseService _firebaseService;
+
 	public CapturePage()
 	{
 		InitializeComponent();
+
+		_firebaseService = new FirebaseService();
 	}
 
-	private async void OnSaveClicked(object sender, EventArgs e)
+    public CapturePage(IFirebaseService firebaseService) : this()
+    {
+        _firebaseService = firebaseService;
+    }
+
+    private async void OnSaveClicked(object sender, EventArgs e)
 	{
 		// Get values from input fields
 		string dateFrom = DatePickerFrom.Date.ToString("dd.MM.yyyy");
@@ -21,15 +33,15 @@ public partial class CapturePage : ContentPage
 			return;
 		}
 
-		// Create path and filename for the file
-		string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-		string filename = Path.Combine(documentsPath, "Logbook.txt");
+		// Write dadta in the firebase-database
+		var logbookData = new LogbookData
+		{
+			DateFrom = dateFrom,
+			DateTo = dateUntil,
+			Kilometre = kilometre
+		};
 
-		// Create text for the file
-		string fileText = $"Date from: {dateFrom}\nDate until: {dateUntil}\nKilometre: {kilometre}\n\n";
-
-		// Add text to file
-		File.AppendAllText(filename, fileText );
+		await _firebaseService.WriteLogbookDataAsync(logbookData);
 
 		await DisplayAlert("Success", "Die Daten wurden erfolgreich gespeichert.", "OK");
 	}
