@@ -3,4 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG3_Logbook.CapturePage"
              Title="Capture">
+    <VerticalStackLayout Padding="50">
+        <Label HeightRequest="50" />
+        
+        <Label Text="Date from"/>
+        <DatePicker x:Name="DatePickerFrom" 
+                    HeightRequest="50" />
+
+        <Label HeightRequest="20" />
+        
+        <Label Text="Date until" />
+        <DatePicker x:Name="DatePickerUntil"
+                    HeightRequest="50" />
+
+        <Label HeightRequest="20" />
+
+        <Label Text="Kilometre" />
+        <Entry x:Name="KilometerEntry" 
+               Placeholder="Enter the kilometres driven" />
+
+        <Label HeightRequest="20" />
+        
+        <Button Text="Save" Clicked="OnSaveClicked" />
+    </VerticalStackLayout>
 </ContentPage>
