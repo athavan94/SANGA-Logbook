@@ -4,9 +4,37 @@
              x:Class="PRG3_Logbook.StatisticPage"
              Title="Statistic">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Logbook Data" FontAttributes="Bold" FontSize="Large" Margin="10" />
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label HeightRequest="30" />
+                <Label Grid.Column="0" Text="From Date" FontAttributes="Bold" />
+                <Label Grid.Column="1" Text="To Date" FontAttributes="Bold" />
+                <Label Grid.Column="2" Text="Kilometre" FontAttributes="Bold" />
+            </Grid>
+            <ListView x:Name="logbookListView" IsEnabled="false">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding DateFrom, StringFormat='{0:d}'}" />
+                                <Label Grid.Column="1" Text="{Binding DateTo, StringFormat='{0:d}'}" />
+                                <Label Grid.Column="2" Text="{Binding Kilometre}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

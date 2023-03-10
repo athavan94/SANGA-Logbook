@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Firebase.Database;
+﻿using Firebase.Database;
 using Firebase.Database.Query;
 using PRG3_Logbook.Entities;
-using PRG3_Logbook.Firebase;
+using System.Diagnostics;
 
 namespace PRG3_Logbook.Firebase
 {
@@ -25,9 +20,10 @@ namespace PRG3_Logbook.Firebase
             await _client.Child("SANGA-Logbook").PostAsync(data);
         }
 
-        public Task<List<LogbookData>> GetLogbooksAsync()
+        public async Task<List<LogbookData>> GetLogbooksAsync()
         {
-            throw new NotImplementedException();
+            var logbooks = await _client.Child("SANGA-Logbook").OnceAsync<LogbookData>();
+            return logbooks.Select(item => item.Object).ToList();
         }
     }
 }
