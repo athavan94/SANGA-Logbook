@@ -67,15 +67,24 @@
   </ItemGroup>-->
 
   <ItemGroup>
-    <MauiXaml Update="AboutPage.xaml">
+    <MauiXaml Update="Pages\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
-    <MauiXaml Update="Capture.xaml">
+    <MauiXaml Update="Pages\CapturePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
-    <MauiXaml Update="Statistic.xaml">
+    <MauiXaml Update="Pages\StatisticPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\CapturePage.xaml.cs">
+      <DependentUpon>CapturePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\StatisticPage.xaml.cs">
+      <DependentUpon>StatisticPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

@@ -9,13 +9,13 @@
     <TabBar>
         <ShellContent
             Title="Capture"
-            ContentTemplate="{DataTemplate local:Capture}"
+            ContentTemplate="{DataTemplate local:CapturePage}"
             Route="Capture" 
             Icon="{OnPlatform 'icon_add.png'}" />
 
         <ShellContent
             Title="Statistic"
-            ContentTemplate="{DataTemplate local:Statistic}"
+            ContentTemplate="{DataTemplate local:StatisticPage}"
             Route="Statistic"
             Icon="{OnPlatform 'icon_monitoring.png'}" />
 
