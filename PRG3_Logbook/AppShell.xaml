@@ -8,15 +8,22 @@
 
     <TabBar>
         <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />
+            Title="Capture"
+            ContentTemplate="{DataTemplate local:Capture}"
+            Route="Capture" 
+            Icon="{OnPlatform 'icon_add.png'}" />
+
+        <ShellContent
+            Title="Statistic"
+            ContentTemplate="{DataTemplate local:Statistic}"
+            Route="Statistic"
+            Icon="{OnPlatform 'icon_monitoring.png'}" />
 
         <ShellContent
             Title="About"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Route="AboutPage"
-            Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
+            Icon="{OnPlatform 'icon_info.png'}" />
     </TabBar>
 
 </Shell>
