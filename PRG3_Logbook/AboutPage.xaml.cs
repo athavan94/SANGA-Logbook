@@ -7,9 +7,15 @@ public partial class AboutPage : ContentPage
 		InitializeComponent();
 	}
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private async void HomePage(object sender, EventArgs e)
     {
         // Navigate to the specified URL in the system browser.
-        await Launcher.Default.OpenAsync("https://aka.ms/maui");
+        await Launcher.Default.OpenAsync("https://sanga.dev/");
+    }
+
+    private async void GitHubPage(object sender, EventArgs e)
+    {
+        // Navigate to the specified URL in the system browser.
+        await Launcher.Default.OpenAsync("https://github.com/athavan94/");
     }
 }
